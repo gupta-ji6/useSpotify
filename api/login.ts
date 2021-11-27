@@ -33,6 +33,10 @@ const generateRandomString = (length) => {
 };
 
 export default (_req: VercelRequest, res: VercelResponse) => {
+  console.log('login REDIRECT_URI -> ', process.env.REDIRECT_URI);
+  console.log('login SPOTIFY_CLIENT_ID -> ', process.env.SPOTIFY_CLIENT_ID);
+  console.log('login REDIRECT_URI -> ', process.env.REDIRECT_URI);
+
   const loginURL =
     `${SPOTIFY_AUTHORIZE_URL}?` +
     queryString.stringify(

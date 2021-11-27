@@ -7,31 +7,33 @@ const SPOTIFY_URL_GENERATE_TOKEN = 'https://accounts.spotify.com/api/token';
 const basic = Buffer.from(
   `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
 ).toString('base64');
-// console.log('basic', basic);
+console.log('basic -> ', basic);
 
 export default async (_req: VercelRequest, res: VercelResponse) => {
+  console.log('callback REDIRECT_URI -> ', process.env.REDIRECT_URI);
+
   console.log(_req.query);
 
   if (_req.method === 'GET') {
-    if (_req.query.state === null) {
+    if (_req.query?.state === null) {
       res.redirect(
         '/#' +
           queryString.stringify({
             error: 'state_mismatch',
           })
       );
-    } else if (_req.query.error) {
+    } else if (_req.query?.error) {
       res.redirect(
         '/#' +
           queryString.stringify({
-            error: _req.query.error,
+            error: _req.query?.error,
           })
       );
     } else {
       try {
         if (
           process.env.NODE_ENV === 'production' &&
-          _req.headers.origin !== 'https://scriptified.dev'
+          _req.headers?.origin !== 'https://scriptified.dev'
         ) {
           throw new Error('Invalid origin');
         }
@@ -39,9 +41,9 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
         const response = await axios.post(
           SPOTIFY_URL_GENERATE_TOKEN,
           {
-            code: _req.query.code,
-            redirect_uri: process.env.REDIRECT_URI,
+            code: _req.query?.code,
             grant_type: 'authorization_code',
+            redirect_uri: process.env.REDIRECT_URI,
           },
           {
             headers: {
@@ -54,22 +56,22 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
 
         res.status(200).json(response);
       } catch (error) {
-        if (error.response) {
+        if (error?.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
-          console.log(error.response.data);
-          console.log(error.response.status);
+          console.log(error?.response?.data);
+          console.log(error?.response?.status);
           //   console.log(error.response.headers);
-        } else if (error.request) {
+        } else if (error?.request) {
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
           // http.ClientRequest in node.js
-          console.log(error.request);
+          console.log(error?.request);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
+          console.log('Error', error?.message);
         }
-        console.log(error.config);
+        console.log(error?.config);
         //   console.error(error);
         return res.status(422).send('Error');
       }

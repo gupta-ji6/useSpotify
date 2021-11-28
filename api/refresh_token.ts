@@ -9,7 +9,7 @@ const basic = Buffer.from(
 
 export default async (_req: VercelRequest, res: VercelResponse) => {
   if (_req.method === 'POST') {
-    if (_req.query?.refresh_token === null) {
+    if (_req.body?.refresh_token === null) {
       return res
         .status(401)
         .send(`Error: refresh_token is undefined in request query parameters`);
@@ -24,7 +24,7 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
 
       const data = queryString.stringify({
         grant_type: 'refresh_token',
-        refresh_token: _req.query?.refresh_token,
+        refresh_token: _req.body?.refresh_token,
       });
 
       const tokenResponse = await axios.post(SPOTIFY_TOKEN_URL, data, {

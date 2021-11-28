@@ -1,3 +1,4 @@
 import generateRandomString from './generateRandomString';
+import getAccessToken from './getAccessToken';
 
-export { generateRandomString };
+export { generateRandomString, getAccessToken };

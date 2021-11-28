@@ -1,6 +1,6 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import axios from 'axios';
-import { SPOTIFY_TOKEN_URL } from '../src/constants';
+import { SPOTIFY_TOKEN_URL, ORIGIN } from '../constants';
 const queryString = require('query-string');
 
 const basic = Buffer.from(
@@ -15,6 +15,13 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
         .send(`Error: refresh_token is undefined in request query parameters`);
     }
     try {
+      if (
+        process.env.NODE_ENV === 'production' &&
+        _req.headers?.origin !== ORIGIN
+      ) {
+        throw new Error('Invalid origin');
+      }
+
       const data = queryString.stringify({
         grant_type: 'refresh_token',
         refresh_token: _req.body?.refresh_token,

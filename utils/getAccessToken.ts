@@ -45,4 +45,4 @@ const getAccessToken = async () => {
   return access_token;
 };
 
-export default { getAccessToken };
+export default getAccessToken;

@@ -1,6 +1,6 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import axios from 'axios';
-import { SPOTIFY_TOKEN_URL, ORIGIN } from '../constants';
+import { SPOTIFY_TOKEN_URL, ORIGIN } from '../src/constants';
 const queryString = require('query-string');
 
 const basic = Buffer.from(

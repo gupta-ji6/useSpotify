@@ -1,6 +1,6 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { generateRandomString } from '../utils';
-import { SPOTIFY_AUTHORIZE_URL, SCOPES } from '../constants';
+import { generateRandomString } from '../src/css/utils';
+import { SPOTIFY_AUTHORIZE_URL, SCOPES } from '../src/constants';
 const queryString = require('query-string');
 
 export default (_req: VercelRequest, res: VercelResponse) => {

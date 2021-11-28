@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchCurrentTrack } from '../utils';
+import { fetchCurrentTrack } from '../css/utils';
 
 /**
  * Get the object currently being played on the user’s Spotify account.

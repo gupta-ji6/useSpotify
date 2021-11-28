@@ -1,5 +1,5 @@
 import getAccessToken from './getAccessToken';
-import { NOW_PLAYING_URL } from '../constants';
+import { NOW_PLAYING_URL } from '../../constants';
 import axios from 'axios';
 
 /**

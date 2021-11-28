@@ -1,7 +1,7 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import axios from 'axios';
 import { Buffer } from 'buffer';
-import { SPOTIFY_TOKEN_URL, ORIGIN } from '../src/constants';
+import { SPOTIFY_TOKEN_URL } from '../src/constants';
 const queryString = require('query-string');
 
 const basic = Buffer.from(
@@ -30,13 +30,13 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
       return res.status(401).send(`Authorization failed: ${_req.query?.error}`);
     } else {
       try {
-        if (
-          process.env.NODE_ENV === 'production' &&
-          _req.headers?.origin !== ORIGIN
-        ) {
-          console.log('origin', _req.headers.origin);
-          throw new Error('Invalid origin');
-        }
+        //     if (
+        //       process.env.NODE_ENV === 'production' &&
+        //       _req.headers?.origin !== ORIGIN
+        //     ) {
+        //       console.log('origin', _req.headers.origin);
+        //       throw new Error('Invalid origin');
+        //     }
 
         const data = queryString.stringify({
           grant_type: 'authorization_code',

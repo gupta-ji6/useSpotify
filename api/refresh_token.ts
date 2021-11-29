@@ -1,10 +1,10 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import axios from 'axios';
-import { SPOTIFY_TOKEN_URL } from '../constants';
+import { SPOTIFY_TOKEN_URL } from '../src/constants';
 const queryString = require('query-string');
 
 const basic = Buffer.from(
-  `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+  `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`,
 ).toString('base64');
 
 export default async (_req: VercelRequest, res: VercelResponse) => {

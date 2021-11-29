@@ -1,11 +1,11 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import axios from 'axios';
 import { Buffer } from 'buffer';
-import { SPOTIFY_TOKEN_URL } from '../constants';
+import { SPOTIFY_TOKEN_URL } from '../src/constants';
 const queryString = require('query-string');
 
 const basic = Buffer.from(
-  `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+  `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`,
 ).toString('base64');
 
 export default async (_req: VercelRequest, res: VercelResponse) => {
@@ -15,7 +15,7 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
         '/#' +
           queryString.stringify({
             error: 'state_mismatch',
-          })
+          }),
       );
       return res
         .status(401)
@@ -25,7 +25,7 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
         '/#' +
           queryString.stringify({
             error: _req.query?.error,
-          })
+          }),
       );
       return res.status(401).send(`Authorization failed: ${_req.query?.error}`);
     } else {

@@ -1,6 +1,6 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { generateRandomString } from '../utils';
-import { SPOTIFY_AUTHORIZE_URL, SCOPES } from '../constants';
+import { generateRandomString } from '../src/utils';
+import { SPOTIFY_AUTHORIZE_URL, SCOPES } from '../src/constants';
 const queryString = require('query-string');
 
 export default (_req: VercelRequest, res: VercelResponse) => {
@@ -19,7 +19,7 @@ export default (_req: VercelRequest, res: VercelResponse) => {
           state: generateRandomString(16),
           scope: SCOPES,
         },
-        { arrayFormat: 'comma' }
+        { arrayFormat: 'comma' },
       );
 
     res.redirect(loginURL);

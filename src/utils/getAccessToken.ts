@@ -10,21 +10,21 @@ const getAccessToken = async () => {
 
   if ('REFRESH_TOKEN_ENDPOINT' in process.env === false) {
     throw new Error(
-      `'REFRESH_TOKEN_ENDPOINT' key is not defined in environment variables`
+      `'REFRESH_TOKEN_ENDPOINT' key is not defined in environment variables`,
     );
   }
   if ('SPOTIFY_REFRESH_TOKEN' in process.env === false) {
     throw new Error(
-      `'SPOTIFY_REFRESH_TOKEN' key is not defined in environment variables`
+      `'SPOTIFY_REFRESH_TOKEN' key is not defined in environment variables`,
     );
   }
 
   try {
-    const response = await axios.post(process.env.REFRESH_TOKEN_ENDPOINT, {
+    const response = await axios.post(process.env.REFRESH_TOKEN_ENDPOINT as string, {
       refresh_token: process.env.SPOTIFY_REFRESH_TOKEN,
     });
     access_token = response.data?.access_token;
-  } catch (error) {
+  } catch (error: any) {
     if (error?.response) {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx

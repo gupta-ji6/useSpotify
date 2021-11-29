@@ -8,18 +8,15 @@ import { fetchCurrentTrack } from '../utils';
  * @return {Object}  contains information about the currently playing track or episode and its context.
  */
 function useNowPlayingTrack() {
-  const [nowPlayingTrack, setNowPlayingTrack] = useState<{
-    album: any;
-    artists: any;
-    external_urls: any;
-    name: any;
-    preview_url: any;
-  }>(undefined);
-  const [nowPlayingError, setNowPlayingError] = useState(null);
+  const [nowPlayingTrack, setNowPlayingTrack] = useState<
+    | { album: any; artists: any; external_urls: any; name: any; preview_url: any }
+    | undefined
+  >(undefined);
+  const [nowPlayingError, setNowPlayingError] = useState<string | null>(null);
   const [nowPlayingLoading, setNowPlayingLoading] = useState(false);
   const [isAyushListeningToAnything, setIsAyushListeningToAnything] =
     useState(false);
-  const [audio, setAudio] = useState(null);
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
   async function fetchData(): Promise<void> {
     setNowPlayingLoading(true);

@@ -1,21 +1,50 @@
 {
+  "name": "use-spotify",
   "private": true,
+  "description": "Modular utility hooks that to fetch your Spotify data",
+  "author": "gupta-ji6",
+  "license": "MIT",
+  "repository": "gupta-ji6/useSpotify",
+  "main": "dist/index.js",
   "engines": {
     "node": "14.x"
   },
   "scripts": {
-    "start": "vercel dev",
     "deploy": "vercel",
-    "deploy:prod": "vercel --prod"
+    "deploy:prod": "vercel --prod",
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "test": "jest"
   },
-  "dependencies": {
-    "axios": "^0.24.0",
-    "query-string": "^7.0.1",
-    "react": "17.0.1"
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0"
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2",
+    "babel-core": "6.26.3",
+    "babel-runtime": "6.26.0",
+    "eslint-plugin-react-hooks": "4.0.8",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "rollup": "1.29.0",
+    "rollup-plugin-sass": "1.2.2",
+    "rollup-plugin-typescript2": "0.25.3",
+    "rollup-plugin-uglify": "6.0.4",
+    "typescript": "4.1.5",
     "@vercel/node": "1.10.0",
-    "@types/react": "17.0.3",
-    "typescript": "4.1.5"
-  }
+    "axios": "0.24.0",
+    "query-string": "7.0.1"
+  },
+  "keywords": [
+    "spotify",
+    "react",
+    "react hooks",
+    "typescript",
+    "npm"
+  ]
 }

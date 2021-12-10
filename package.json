@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "github.com/gupta-ji6/useSpotify.git"
+    "url": "https://github.com/gupta-ji6/useSpotify.git"
   },
   "main": "dist/index.js",
   "engines": {

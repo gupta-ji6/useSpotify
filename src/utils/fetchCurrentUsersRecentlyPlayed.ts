@@ -1,6 +1,6 @@
 import axios from 'axios';
 import getAccessToken from './getAccessToken';
-import { CURRENT_USER_RECENTLY_PLAYED_URL, PLAYLISTS_URL } from '../constants';
+import { CURRENT_USER_RECENTLY_PLAYED_URL } from '../constants';
 
 /**
  * Get tracks from the current user’s recently played tracks. Note: Currently doesn’t support podcast episodes.

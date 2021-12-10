@@ -1,6 +1,6 @@
 {
   "name": "@gupta-ji6/use-spotify",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Modular utility hooks that to fetch your Spotify data",
   "author": "gupta-ji6",
   "license": "MIT",
@@ -13,8 +13,7 @@
     "node": "14.x"
   },
   "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com"
+    "access": "public"
   },
   "scripts": {
     "deploy": "vercel",

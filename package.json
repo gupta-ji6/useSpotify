@@ -9,6 +9,9 @@
   "engines": {
     "node": "14.x"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "deploy": "vercel",
     "deploy:prod": "vercel --prod",

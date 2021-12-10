@@ -1,6 +1,6 @@
 {
   "name": "@gupta-ji6/use-spotify",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Modular utility hooks that to fetch your Spotify data",
   "author": "gupta-ji6",
   "license": "MIT",

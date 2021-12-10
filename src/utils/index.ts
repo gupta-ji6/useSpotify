@@ -5,9 +5,11 @@ import fetchPlaylistById from './fetchPlaylistById';
 import fetchCurrentUserPlaylists from './fetchCurrentUserPlaylists';
 import fetchCurrentUsersRecentlyPlayed from './fetchCurrentUsersRecentlyPlayed';
 import fetchCurrentUsersSavedTracks from './fetchCurrentUsersSavedTracks';
+import fetchCurrentUsersTopArtistsOrTracks from './fetchCurrentUsersTopArtistsOrTracks';
 
 export {
   fetchCurrentTrack,
+  fetchCurrentUsersTopArtistsOrTracks,
   fetchCurrentUserPlaylists,
   fetchCurrentUsersRecentlyPlayed,
   fetchCurrentUsersSavedTracks,

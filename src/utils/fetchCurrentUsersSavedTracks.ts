@@ -26,7 +26,7 @@ const fetchCurrentUsersSavedTracks = async (limit = 20): Promise<any> => {
     if (response.status === 200) {
       const data = response.data;
 
-      if (data?.items.length) {
+      if (data?.items?.length) {
         const { items, href, next, total } = data;
         return {
           items,

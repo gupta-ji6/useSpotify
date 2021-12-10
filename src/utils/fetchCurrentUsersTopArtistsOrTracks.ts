@@ -5,7 +5,7 @@ import { CURRENT_USER_TOP_ARTISTS_TRACKS_URL } from '../constants';
 type Type = 'artists' | 'tracks';
 type TimeRange = 'long_term' | 'medium_term' | 'short_term';
 
-interface FetchCurrentUsersTopArtistsOrTracksArgs {
+export interface FetchCurrentUsersTopArtistsOrTracksArgs {
   type: Type;
   limit: number;
   time_range: TimeRange;

@@ -1,11 +1,11 @@
+import axios from 'axios';
 import getAccessToken from './getAccessToken';
 import { PLAYLISTS_URL } from '../constants';
-import axios from 'axios';
 
 /**
  * Get a playlist owned by a Spotify user.
  *
- * @see {@link https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-playlist}
+ * @see {@link https://developer.spotify.com/documentation/web-api/reference/#/operations/get-playlist}
  * @param {string} playlist_id The Spotify ID for the playlist.
  * @return {Promise}  a playlist object.
  */

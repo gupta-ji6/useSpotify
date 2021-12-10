@@ -1,11 +1,11 @@
+import axios from 'axios';
 import getAccessToken from './getAccessToken';
 import { NOW_PLAYING_URL } from '../constants';
-import axios from 'axios';
 
 /**
  * Get the object currently being played on the user’s Spotify account.
  *
- * @see {@link https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-the-users-currently-playing-track}
+ * @see {@link https://developer.spotify.com/documentation/web-api/reference/#/operations/get-the-users-currently-playing-track}
  * @return {Promise}  A successful request will return a 200 OK response code with a json payload that contains information about the currently playing track or episode and its context.
  */
 const fetchCurrentTrack = async (): Promise<

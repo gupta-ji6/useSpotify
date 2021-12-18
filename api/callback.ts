@@ -52,7 +52,7 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
         });
         console.log(tokenResponse.data);
 
-        res.status(tokenResponse.status).send(tokenResponse.data);
+        return res.status(tokenResponse.status).send(tokenResponse.data);
       } catch (error) {
         if (error?.response) {
           // The request was made and the server responded with a status code

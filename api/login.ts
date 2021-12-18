@@ -22,9 +22,9 @@ export default (_req: VercelRequest, res: VercelResponse) => {
         { arrayFormat: 'comma' },
       );
 
-    res.redirect(loginURL);
+    return res.redirect(loginURL);
   } else {
-    res.send(400).send({
+    return res.send(400).send({
       error: `Cannot process your request. 'SPOTIFY_CLIENT_ID' and/or 'REDIRECT_URI' keys are not set in your .env file.`,
     });
   }

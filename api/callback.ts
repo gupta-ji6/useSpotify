@@ -74,5 +74,7 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
         return res.status(error?.response?.status).send(error?.response?.data);
       }
     }
+  } else {
+    return res.status(400).send('Only GET method is supported.');
   }
 };

@@ -54,5 +54,7 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
       console.log(error?.config);
       return res.status(error?.response?.status).send(error?.response?.data);
     }
+  } else {
+    return res.status(400).send('Only POST method is supported.');
   }
 };

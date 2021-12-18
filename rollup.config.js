@@ -16,5 +16,5 @@ export default {
     },
   ],
   plugins: [sass({ insert: true }), typescript(), uglify()],
-  external: ['react', 'react-dom', 'axios'],
+  external: ['react', 'react-dom', 'axios', 'lodash/uniqBy'],
 };

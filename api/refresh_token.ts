@@ -1,13 +1,13 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import axios from 'axios';
-import { SPOTIFY_TOKEN_URL } from '../src/constants';
+import { SPOTIFY_TOKEN_URL } from './_lib/constants';
 const queryString = require('query-string');
 
 const basic = Buffer.from(
   `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`,
 ).toString('base64');
 
-export default async (_req: VercelRequest, res: VercelResponse) => {
+const refresh_token = async (_req: VercelRequest, res: VercelResponse) => {
   if (_req.method === 'POST') {
     if (_req.body?.refresh_token === null) {
       return res
@@ -55,6 +55,10 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
       return res.status(error?.response?.status).send(error?.response?.data);
     }
   } else {
-    return res.status(400).send('Only POST method is supported.');
+    return res
+      .status(400)
+      .send(`The endpoint doesn't support ${_req.method} yet, try POST.`);
   }
 };
+
+export default refresh_token;

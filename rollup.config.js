@@ -1,10 +1,14 @@
-import sass from 'rollup-plugin-sass';
-import { uglify } from 'rollup-plugin-uglify';
+import { DEFAULT_EXTENSIONS } from '@babel/core';
+import resolve from '@rollup/plugin-node-resolve';
+import babel from '@rollup/plugin-babel';
+import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
-
 import pkg from './package.json';
 
-export default {
+/**
+ * @type {import('rollup').RollupOptions}
+ */
+const config = {
   input: 'src/hooks/index.ts',
   output: [
     {
@@ -15,6 +19,17 @@ export default {
       strict: false,
     },
   ],
-  plugins: [sass({ insert: true }), typescript(), uglify()],
+  plugins: [
+    resolve(),
+    typescript(),
+    babel({
+      babelHelpers: 'bundled',
+      extensions: [...DEFAULT_EXTENSIONS, '.ts', '.tsx'],
+    }),
+    terser(),
+  ],
   external: ['react', 'react-dom', 'axios', 'lodash/uniqBy'],
+  treeshake: true,
 };
+
+export default config;

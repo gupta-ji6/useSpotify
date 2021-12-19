@@ -1,9 +1,9 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { generateRandomString } from '../src/utils';
-import { SPOTIFY_AUTHORIZE_URL, SCOPES } from '../src/constants';
+import generateRandomString from './_lib/generateRandomString';
+import { SPOTIFY_AUTHORIZE_URL, SCOPES } from './_lib/constants';
 const queryString = require('query-string');
 
-export default (_req: VercelRequest, res: VercelResponse) => {
+const login = (_req: VercelRequest, res: VercelResponse) => {
   console.log('login REDIRECT_URI -> ', process.env.REDIRECT_URI);
   console.log('login SPOTIFY_CLIENT_ID -> ', process.env.SPOTIFY_CLIENT_ID);
   console.log('login REDIRECT_URI -> ', process.env.REDIRECT_URI);
@@ -29,3 +29,5 @@ export default (_req: VercelRequest, res: VercelResponse) => {
     });
   }
 };
+
+export default login;

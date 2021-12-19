@@ -1,14 +1,14 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import axios from 'axios';
 import { Buffer } from 'buffer';
-import { SPOTIFY_TOKEN_URL } from '../src/constants';
+import { SPOTIFY_TOKEN_URL } from './_lib/constants';
 const queryString = require('query-string');
 
 const basic = Buffer.from(
   `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`,
 ).toString('base64');
 
-export default async (_req: VercelRequest, res: VercelResponse) => {
+const callback = async (_req: VercelRequest, res: VercelResponse) => {
   if (_req.method === 'GET') {
     if (_req.query?.state === null) {
       res.redirect(
@@ -75,6 +75,10 @@ export default async (_req: VercelRequest, res: VercelResponse) => {
       }
     }
   } else {
-    return res.status(400).send('Only GET method is supported.');
+    return res
+      .status(400)
+      .send(`The endpoint doesn't support ${_req.method} yet, try GET.`);
   }
 };
+
+export default callback;

@@ -1,4 +1,3 @@
-import generateRandomString from './generateRandomString';
 import getAccessToken from './getAccessToken';
 import fetchCurrentTrack from './fetchCurrentTrack';
 import fetchPlaylistById from './fetchPlaylistById';
@@ -16,6 +15,5 @@ export {
   fetchCurrentUsersRecentlyPlayed,
   fetchCurrentUsersSavedTracks,
   fetchPlaylistById,
-  generateRandomString,
   getAccessToken,
 };
